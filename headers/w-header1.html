@@ -44,7 +44,70 @@ letter-spacing:1px;
 color:#c09434;
 
 }
+.firefly{
 
+position:absolute;
+
+width:3px;
+height:3px;
+
+border-radius:999px;
+
+background:#f6d365;
+
+box-shadow:
+0 0 6px #f6d365,
+0 0 12px #f6d365;
+
+opacity:0;
+
+animation:
+fireflyFloat linear infinite,
+fireflyGlow ease-in-out infinite;
+
+}
+
+/* FLOAT */
+
+@keyframes fireflyFloat{
+
+0%{
+transform:
+translateY(0px)
+translateX(0px);
+}
+
+50%{
+transform:
+translateY(-12px)
+translateX(6px);
+}
+
+100%{
+transform:
+translateY(0px)
+translateX(0px);
+}
+
+}
+
+/* GLOW */
+
+@keyframes fireflyGlow{
+
+0%{
+opacity:0.15;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+opacity:0.15;
+}
+
+}
 /* GRASS AREA */
 
 .grass-field{
@@ -427,7 +490,47 @@ translateX(0px);
 <div class="blade" style="left:99.1%;height:40px;width:2px;"></div>
 
 </div>
+<div class="firefly"
+style="
+left:12%;
+bottom:58px;
+animation-duration:7s, 3s;
+"></div>
 
+<div class="firefly"
+style="
+left:27%;
+bottom:74px;
+animation-duration:9s, 4s;
+"></div>
+
+<div class="firefly"
+style="
+left:43%;
+bottom:49px;
+animation-duration:8s, 2.5s;
+"></div>
+
+<div class="firefly"
+style="
+left:61%;
+bottom:82px;
+animation-duration:10s, 5s;
+"></div>
+
+<div class="firefly"
+style="
+left:79%;
+bottom:66px;
+animation-duration:6s, 3.5s;
+"></div>
+
+<div class="firefly"
+style="
+left:91%;
+bottom:57px;
+animation-duration:11s, 4.5s;
+"></div>
 </body>
 
 </html>
