@@ -14,7 +14,7 @@ padding:0;
 width:100%;
 height:100%;
 overflow:hidden;
-background:transparent;
+background:none;
 }
 
 /* MAIN CONTAINER */
@@ -119,7 +119,18 @@ class="branch"
 >
 
 </div>
+<script>
 
+(function() {
+
+const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+document.body.style.background =
+isDark ? 'rgb(25,25,25)' : 'white';
+
+})();
+
+</script>
 </body>
 
 </html>
