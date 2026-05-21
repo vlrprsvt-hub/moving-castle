@@ -185,6 +185,67 @@ transform-origin:bottom center;
 animation:wind-back 7s ease-in-out infinite;
 
 }
+  .curve-group{
+
+position:absolute;
+
+bottom:0;
+
+display:flex;
+align-items:flex-end;
+
+gap:2px;
+
+animation:
+curveWind 7s ease-in-out infinite;
+
+opacity:0.45;
+
+z-index:6;
+
+}
+
+.curve-blade{
+
+background:
+linear-gradient(
+to top,
+#4f7411,
+#79b323,
+#ace043
+);
+
+border-radius:
+100% 100% 0 0;
+
+transform-origin:
+bottom center;
+
+}
+
+/* SMALL */
+
+.curve-blade.small{
+
+width:4px;
+height:22px;
+
+transform:
+rotate(-18deg);
+
+}
+
+/* MEDIUM */
+
+.curve-blade.medium{
+
+width:5px;
+height:34px;
+
+transform:
+rotate(-6deg);
+
+}
 
 /* WIND */
 
@@ -489,6 +550,14 @@ translateX(0px);
 
 <div class="blade" style="left:99.1%;height:40px;width:2px;"></div>
 
+  <div class="curve-group" style="left:12%;">
+
+<div class="curve-blade small"></div>
+<div class="curve-blade medium"></div>
+<div class="curve-blade small"></div>
+
+</div>
+  
 </div>
 <div class="firefly"
 style="
