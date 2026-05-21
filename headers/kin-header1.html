@@ -13,9 +13,6 @@ margin:0;
 padding:0;
 width:100%;
 height:100%;
-
-background: rgba(0,0,0,0);
-
 overflow:hidden;
 }
 
@@ -39,6 +36,22 @@ line-height:1;
 <body>
 
 ── Администрация ⚜ Договоры ⚜ Казна ──
+
+<script>
+
+(function() {
+
+var mql = window.matchMedia('(prefers-color-scheme: dark)');
+var isDark = typeof mql.matches === 'boolean' && mql.matches;
+
+document.body.style.background =
+isDark
+? 'rgb(25,25,25)'
+: 'white';
+
+})();
+
+</script>
 
 </body>
 </html>
