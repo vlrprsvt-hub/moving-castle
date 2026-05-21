@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+html, body{
+margin:0;
+padding:0;
+width:100%;
+height:100%;
+overflow:hidden;
+background:transparent;
+}
+
+/* MAIN CONTAINER */
+
+.wasteland-header{
+
+position:relative;
+
+width:100%;
+height:220px;
+
+overflow:hidden;
+
+background:transparent;
+
+}
+
+/* TITLE */
+
+.wasteland-title{
+
+position:absolute;
+
+top:8px;
+left:50%;
+
+transform:translateX(-50%);
+
+z-index:5;
+
+font-family:Georgia, serif;
+
+font-size:30px;
+font-style:italic;
+
+letter-spacing:2px;
+
+color:#b7cf6d;
+
+text-shadow:
+0 0 8px rgba(183,207,109,0.35),
+0 0 18px rgba(183,207,109,0.15);
+
+animation:glow 5s ease-in-out infinite;
+
+white-space:nowrap;
+
+}
+
+/* BRANCH IMAGE */
+
+.branch{
+
+position:absolute;
+
+bottom:0;
+left:50%;
+
+transform:translateX(-50%);
+
+width:100%;
+
+pointer-events:none;
+
+user-select:none;
+
+}
+
+/* GLOW ANIMATION */
+
+@keyframes glow{
+
+0%{
+opacity:0.75;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+opacity:0.75;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wasteland-header">
+
+<div class="wasteland-title">
+✦ ⟡ Wasteland ⟡ ✦
+</div>
+
+<img
+src="div1.png"
+class="branch"
+>
+
+</div>
+
+</body>
+
+</html>
