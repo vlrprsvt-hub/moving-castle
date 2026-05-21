@@ -127,7 +127,36 @@ overflow:hidden;
 /* BLADES */
 
 /* sharper grass tip */
+.curve-blade{
 
+position:absolute;
+
+bottom:-2px;
+
+border-radius:
+100% 0 100% 0;
+
+transform-origin:
+bottom center;
+
+opacity:0.75;
+
+background:
+linear-gradient(
+to top,
+#4f7411 0%,
+#79b323 45%,
+#ace043 100%
+);
+
+filter:blur(0.2px);
+
+animation:
+curveWind 7s ease-in-out infinite;
+
+z-index:6;
+
+}
 .blade{
 
 position:absolute;
@@ -187,7 +216,27 @@ animation:wind-back 7s ease-in-out infinite;
 }
 
 /* WIND */
+@keyframes curveWind{
 
+0%{
+transform:
+rotate(-12deg)
+translateY(0px);
+}
+
+50%{
+transform:
+rotate(8deg)
+translateY(-1px);
+}
+
+100%{
+transform:
+rotate(-12deg)
+translateY(0px);
+}
+
+}
 @keyframes wind {
 
 0%{
@@ -310,7 +359,7 @@ translateX(0px);
 <div class="back-blade" style="left:98.4%;height:52px;width:5px;"></div>
 
   
-<!-- FRONT BLADES -->
+<!-- MIDDLE BLADES -->
 <div class="blade" style="left:0.2%;height:34px;width:2px;"></div>
 <div class="blade" style="left:0.8%;height:49px;width:1px;"></div>
 <div class="blade" style="left:1.3%;height:41px;width:2px;"></div>
@@ -488,8 +537,82 @@ translateX(0px);
 <div class="blade" style="left:98.5%;height:51px;width:2px;"></div>
 
 <div class="blade" style="left:99.1%;height:40px;width:2px;"></div>
+  
+<!-- FRONT BLADES -->
+  
+  <div class="curve-blade"
+style="
+left:2%;
+height:34px;
+width:18px;
+"></div>
 
+<div class="curve-blade"
+style="
+left:9%;
+height:42px;
+width:22px;
+"></div>
+
+<div class="curve-blade"
+style="
+left:18%;
+height:37px;
+width:19px;
+"></div>
+
+<div class="curve-blade"
+style="
+left:27%;
+height:46px;
+width:24px;
+"></div>
+
+<div class="curve-blade"
+style="
+left:39%;
+height:35px;
+width:18px;
+"></div>
+
+<div class="curve-blade"
+style="
+left:48%;
+height:43px;
+width:23px;
+"></div>
+
+<div class="curve-blade"
+style="
+left:59%;
+height:39px;
+width:20px;
+"></div>
+
+<div class="curve-blade"
+style="
+left:71%;
+height:47px;
+width:25px;
+"></div>
+
+<div class="curve-blade"
+style="
+left:84%;
+height:36px;
+width:19px;
+"></div>
+
+<div class="curve-blade"
+style="
+left:93%;
+height:44px;
+width:22px;
+"></div>
 </div>
+  
+<!-- FIREFLIES -->
+  
 <div class="firefly"
 style="
 left:12%;
