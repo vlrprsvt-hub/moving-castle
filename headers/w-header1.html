@@ -185,68 +185,125 @@ transform-origin:bottom center;
 animation:wind-back 7s ease-in-out infinite;
 
 }
-  .curve-group{
+  /* CURVED GRASS GROUP */
+
+.curve-group{
 
 position:absolute;
 
 bottom:0;
 
-display:flex;
-align-items:flex-end;
-
-gap:2px;
+width:20px;
+height:40px;
 
 animation:
 curveWind 7s ease-in-out infinite;
 
-opacity:0.45;
+opacity:0.4;
 
 z-index:6;
 
+pointer-events:none;
+
 }
+
+/* INDIVIDUAL CURVED BLADES */
 
 .curve-blade{
 
-background:
-linear-gradient(
-to top,
-#4f7411,
-#79b323,
-#ace043
-);
+position:absolute;
 
-border-radius:
-100% 100% 0 0;
+bottom:0;
 
 transform-origin:
 bottom center;
 
+background:
+linear-gradient(
+to top,
+#4f7411 0%,
+#79b323 45%,
+#ace043 100%
+);
+
+filter:blur(0.3px);
+
+clip-path: polygon(
+50% 0%,
+100% 100%,
+70% 100%,
+50% 30%,
+30% 100%,
+0% 100%
+);
+
 }
 
-/* SMALL */
+/* LEFT BLADE */
 
-.curve-blade.small{
+.curve-blade.left{
 
-width:4px;
-height:22px;
+left:2px;
+
+width:2px;
+height:24px;
 
 transform:
-rotate(-18deg);
+rotate(-32deg);
 
 }
 
-/* MEDIUM */
+/* CENTER BLADE */
 
-.curve-blade.medium{
+.curve-blade.center{
 
-width:5px;
-height:34px;
+left:8px;
+
+width:3px;
+height:36px;
 
 transform:
-rotate(-6deg);
+rotate(-4deg);
 
 }
 
+/* RIGHT BLADE */
+
+.curve-blade.right{
+
+left:13px;
+
+width:2px;
+height:28px;
+
+transform:
+rotate(24deg);
+
+}
+
+/* WIND */
+
+@keyframes curveWind{
+
+0%{
+transform:
+rotate(-6deg)
+translateX(0px);
+}
+
+50%{
+transform:
+rotate(5deg)
+translateX(2px);
+}
+
+100%{
+transform:
+rotate(-6deg)
+translateX(0px);
+}
+
+}
 /* WIND */
 
 @keyframes wind {
@@ -550,11 +607,11 @@ translateX(0px);
 
 <div class="blade" style="left:99.1%;height:40px;width:2px;"></div>
 
-  <div class="curve-group" style="left:12%;">
+<div class="curve-group" style="left:6%;">
 
-<div class="curve-blade small"></div>
-<div class="curve-blade medium"></div>
-<div class="curve-blade small"></div>
+<div class="curve-blade left"></div>
+<div class="curve-blade center"></div>
+<div class="curve-blade right"></div>
 
 </div>
   
