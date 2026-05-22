@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<style>
+
+html,body{
+
+margin:0;
+padding:0;
+
+width:100%;
+height:100%;
+
+background:transparent;
+
+overflow:hidden;
+
+}
+
+/* DIVIDER CONTAINER */
+
+.divider{
+
+position:relative;
+
+width:100%;
+height:70px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+/* MAIN LINE */
+
+.line{
+
+position:absolute;
+
+width:78%;
+height:1px;
+
+background:
+linear-gradient(
+to right,
+transparent,
+rgba(192,148,52,0.9),
+rgba(231,217,200,1),
+rgba(192,148,52,0.9),
+transparent
+);
+
+opacity:0.9;
+
+}
+
+/* CENTER ORNAMENT */
+
+.ornament{
+
+position:relative;
+
+display:flex;
+align-items:center;
+gap:14px;
+
+color:#c09434;
+
+font-size:20px;
+
+letter-spacing:2px;
+
+text-shadow:
+0 0 8px rgba(192,148,52,0.35);
+
+font-family:Georgia, serif;
+
+}
+
+/* SMALL GLOW */
+
+.glow{
+
+position:absolute;
+
+width:120px;
+height:30px;
+
+background:
+radial-gradient(
+ellipse,
+rgba(192,148,52,0.18),
+transparent 70%
+);
+
+filter:blur(8px);
+
+z-index:-1;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="divider">
+
+<div class="line"></div>
+
+<div class="ornament">
+
+<div class="glow"></div>
+
+✦ ⟡ ✦
+
+</div>
+
+</div>
+
+</body>
+
+</html>
