@@ -10,18 +10,18 @@ padding:0;
 width:100%;
 height:100%;
 overflow:hidden;
-background:transparent;
 }
 
 body{
 display:flex;
 justify-content:center;
 align-items:center;
+background:transparent;
 }
 
 :root{
 --clock:#b89a62;
---size:min(82vmin, 92vw, 92vh);
+--size:min(88vw,88vh);
 }
 
 @media (prefers-color-scheme: dark){
@@ -40,11 +40,11 @@ height:var(--size);
 position:absolute;
 left:50%;
 top:10%;
-width:0.45%;
-height:6%;
+width:calc(var(--size)*0.004);
+height:calc(var(--size)*0.06);
+margin-left:calc(var(--size)*-0.002);
 background:var(--clock);
-transform-origin:center calc(var(--size) * 0.40);
-opacity:.9;
+transform-origin:center calc(var(--size)*0.40);
 }
 
 .hand{
@@ -57,32 +57,32 @@ border-radius:999px;
 }
 
 .hour{
-width:0.95%;
-height:23%;
-margin-left:-0.475%;
+width:calc(var(--size)*0.009);
+height:calc(var(--size)*0.23);
+margin-left:calc(var(--size)*-0.0045);
 opacity:.7;
 }
 
 .minute{
-width:0.55%;
-height:35%;
-margin-left:-0.275%;
+width:calc(var(--size)*0.005);
+height:calc(var(--size)*0.35);
+margin-left:calc(var(--size)*-0.0025);
 }
 
 .second{
-width:0.25%;
-height:44%;
-margin-left:-0.125%;
-opacity:.65;
+width:calc(var(--size)*0.002);
+height:calc(var(--size)*0.44);
+margin-left:calc(var(--size)*-0.001);
+opacity:.6;
 }
 
 .center{
 position:absolute;
 top:50%;
 left:50%;
-width:4.2%;
-height:4.2%;
-margin:-2.1%;
+width:calc(var(--size)*0.042);
+height:calc(var(--size)*0.042);
+margin:calc(var(--size)*-0.021);
 border-radius:50%;
 background:var(--clock);
 }
@@ -93,9 +93,8 @@ top:58%;
 left:50%;
 transform:translateX(-50%);
 font-family:Georgia,serif;
-font-size:12%;
+font-size:calc(var(--size)*0.12);
 font-weight:600;
-letter-spacing:0.04em;
 color:var(--clock);
 white-space:nowrap;
 }
@@ -113,11 +112,11 @@ white-space:nowrap;
 </div>
 
 <script>
-const clock=document.getElementById('clock');
+const clock=document.getElementById("clock");
 
 for(let i=0;i<12;i++){
-const tick=document.createElement('div');
-tick.className='tick';
+const tick=document.createElement("div");
+tick.className="tick";
 tick.style.transform=`rotate(${i*30}deg)`;
 clock.appendChild(tick);
 }
@@ -129,8 +128,24 @@ const s=now.getSeconds();
 const m=now.getMinutes();
 const h=now.getHours()%12;
 
-hour.style.transform=
-`translate(-50%,-100%) rotate(${h*30+m/2}deg)`;
+hour.style.transform=`translate(-50%,-100%) rotate(${h*30+m/2}deg)`;
+minute.style.transform=`translate(-50%,-100%) rotate(${m*6+s/10}deg)`;
+second.style.transform=`translate(-50%,-100%) rotate(${s*6}deg)`;
 
-minute.style.transform=
-`translate(-50%,-100%)
+digital.textContent=now.toLocaleTimeString([],{
+hour:"2-digit",
+minute:"2-digit"
+});
+}
+
+setInterval(update,1000);
+update();
+
+(function(){
+const dark=window.matchMedia('(prefers-color-scheme: dark)').matches;
+document.body.style.background=dark?'rgb(25,25,25)':'white';
+})();
+</script>
+
+</body>
+</html>
