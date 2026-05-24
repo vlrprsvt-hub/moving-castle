@@ -2,10 +2,9 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-html, body {
+html,body{
 margin:0;
 padding:0;
 width:100%;
@@ -18,68 +17,39 @@ display:flex;
 justify-content:center;
 align-items:center;
 background:transparent;
-font-family:Georgia, serif;
+font-family:Georgia,serif;
 }
 
-/* fake notion bg */
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:rgb(25,25,25);
-z-index:-2;
-}
-
-@media (prefers-color-scheme: light){
-body::before{
-background:white;
-}
-}
-
-.widget{
+.clock-wrap{
 display:flex;
 flex-direction:column;
 align-items:center;
-gap:10px;
+gap:14px;
 }
-
-/* CLOCK */
 
 .clock{
 position:relative;
-width:min(38vw,150px);
-height:min(38vw,150px);
+width:180px;
+height:180px;
 border:2px solid #b89a62;
 border-radius:50%;
-
-box-shadow:
-0 0 14px rgba(184,154,98,0.18),
-inset 0 0 16px rgba(106,154,164,0.08);
-
-backdrop-filter:blur(2px);
 }
-
-/* ticks */
 
 .tick{
 position:absolute;
 left:50%;
-top:4px;
+top:8px;
 width:1px;
 height:8px;
 background:#b89a62;
-transform-origin:50% calc(100% - 68px);
-opacity:.75;
+transform-origin:50% 82px;
+opacity:.9;
 }
 
 .tick.major{
-height:12px;
+height:14px;
 width:2px;
-opacity:1;
 }
-
-/* hands */
 
 .hand{
 position:absolute;
@@ -91,21 +61,21 @@ border-radius:999px;
 
 .hour{
 width:3px;
-height:30px;
+height:42px;
 margin-left:-1.5px;
-background:#dce7ea;
+background:#d6e3e8;
 }
 
 .minute{
 width:2px;
-height:46px;
+height:58px;
 margin-left:-1px;
 background:#6a9aa4;
 }
 
 .second{
 width:1px;
-height:54px;
+height:70px;
 margin-left:-0.5px;
 background:#b89a62;
 }
@@ -114,26 +84,23 @@ background:#b89a62;
 position:absolute;
 top:50%;
 left:50%;
-width:8px;
-height:8px;
-margin:-4px;
+width:10px;
+height:10px;
+margin:-5px;
 border-radius:50%;
 background:#b89a62;
-box-shadow:0 0 8px rgba(184,154,98,.45);
 }
 
-/* timezone */
-
 .zone{
-font-size:12px;
-letter-spacing:1px;
-color:#8faab2;
+font-size:15px;
+letter-spacing:2px;
+color:#8da5af;
 text-transform:uppercase;
 }
 
 .time{
-font-size:15px;
-letter-spacing:2px;
+font-size:18px;
+letter-spacing:3px;
 color:#e7d9c8;
 }
 </style>
@@ -141,7 +108,7 @@ color:#e7d9c8;
 
 <body>
 
-<div class="widget">
+<div class="clock-wrap">
 
 <div class="clock" id="clock">
 <div class="hand hour" id="hour"></div>
@@ -157,56 +124,48 @@ color:#e7d9c8;
 
 <script>
 
-/* generate ticks */
-
-const clock = document.getElementById("clock");
+const clock = document.getElementById('clock');
 
 for(let i=0;i<60;i++){
-const tick = document.createElement("div");
-tick.className = i % 5 === 0 ? "tick major" : "tick";
-tick.style.transform = `rotate(${i*6}deg)`;
+const tick=document.createElement('div');
+tick.className=i%5===0?'tick major':'tick';
+tick.style.transform=`rotate(${i*6}deg)`;
 clock.appendChild(tick);
 }
 
-/* timezone auto detect */
+const tz=Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-const timezone =
-Intl.DateTimeFormat().resolvedOptions().timeZone;
+document.getElementById('zone').textContent=
+tz.split('/').pop().replace('_',' ');
 
-document.getElementById("zone").textContent =
-timezone.split("/").pop().replace("_"," ");
+function update(){
 
-/* update */
+const now=new Date();
 
-function updateClock(){
+const s=now.getSeconds()+now.getMilliseconds()/1000;
+const m=now.getMinutes()+s/60;
+const h=(now.getHours()%12)+m/60;
 
-const now = new Date();
+hour.style.transform=`rotate(${h*30}deg)`;
+minute.style.transform=`rotate(${m*6}deg)`;
+second.style.transform=`rotate(${s*6}deg)`;
 
-const sec = now.getSeconds() + now.getMilliseconds()/1000;
-const min = now.getMinutes() + sec/60;
-const hr = (now.getHours()%12) + min/60;
+digital.textContent=now.toLocaleTimeString();
 
-document.getElementById("second").style.transform =
-`rotate(${sec*6}deg)`;
-
-document.getElementById("minute").style.transform =
-`rotate(${min*6}deg)`;
-
-document.getElementById("hour").style.transform =
-`rotate(${hr*30}deg)`;
-
-document.getElementById("digital").textContent =
-now.toLocaleTimeString([],{
-hour:'2-digit',
-minute:'2-digit',
-second:'2-digit'
-});
-
-requestAnimationFrame(updateClock);
+requestAnimationFrame(update);
 }
 
-updateClock();
+update();
 
+(function(){
+var dark=window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+document.body.style.background=
+dark?'rgb(25,25,25)':'white';
+
+document.documentElement.style.background=
+dark?'rgb(25,25,25)':'white';
+})();
 </script>
 
 </body>
