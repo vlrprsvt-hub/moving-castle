@@ -1,1 +1,14 @@
 <iframe src="https://free.timeanddate.com/clock/iafgneg0/szw110/szh110/hoc101c28/hbw0/hfc101c28/cf100/hgr0/fav0/fiv0/mqcd6e3e8/mql15/mqw4/mqd94/mhcd6e3e8/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd/hsceee" frameborder="0" width="110" height="110"></iframe>
+<script>
+(function() {
+
+var mql = window.matchMedia('(prefers-color-scheme: dark)');
+var isDark = typeof mql.matches === 'boolean' && mql.matches;
+
+document.body.style.background =
+isDark
+? 'rgb(25,25,25)'
+: 'white';
+
+})();
+</script>
