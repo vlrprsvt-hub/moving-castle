@@ -1,0 +1,15 @@
+<script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+<script>
+(function() {
+
+var mql = window.matchMedia('(prefers-color-scheme: dark)');
+var isDark = typeof mql.matches === 'boolean' && mql.matches;
+
+document.body.style.background =
+isDark
+? 'rgb(25,25,25)'
+: 'white';
+
+})();
+</script>
+<div class="commonninja_component pid-36b17331-7841-4518-9b84-2da06b02f958"></div>
