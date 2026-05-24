@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 
 <style>
-html, body {
+html,body{
 margin:0;
 padding:0;
 width:100%;
@@ -17,31 +17,33 @@ body{
 display:flex;
 justify-content:center;
 align-items:center;
-font-family:Georgia, serif;
+}
+
+:root{
+--clock:#b89a62;
+}
+
+@media (prefers-color-scheme: dark){
+:root{
+--clock:#b4e5eb;
+}
 }
 
 .clock{
 position:relative;
-width:260px;
-height:260px;
-border:2px solid var(--clock-color);
-border-radius:50%;
+width:420px;
+height:420px;
 }
 
 .tick{
 position:absolute;
 left:50%;
-top:10px;
+top:42px;
 width:2px;
-height:16px;
-background:var(--clock-color);
-transform-origin:center 120px;
+height:26px;
+background:var(--clock);
+transform-origin:center 168px;
 opacity:.9;
-}
-
-.tick.small{
-height:10px;
-opacity:.6;
 }
 
 .hand{
@@ -49,52 +51,51 @@ position:absolute;
 left:50%;
 top:50%;
 transform-origin:bottom center;
+background:var(--clock);
 border-radius:999px;
 }
 
 .hour{
 width:4px;
-height:55px;
+height:96px;
 margin-left:-2px;
-background:var(--clock-color);
+opacity:.7;
 }
 
 .minute{
-width:3px;
-height:80px;
-margin-left:-1.5px;
-background:var(--clock-color);
-opacity:.75;
+width:2px;
+height:148px;
+margin-left:-1px;
 }
 
 .second{
 width:1px;
-height:95px;
+height:184px;
 margin-left:-0.5px;
-background:var(--clock-color);
-opacity:.55;
+opacity:.65;
 }
 
 .center{
 position:absolute;
 top:50%;
 left:50%;
-width:14px;
-height:14px;
-margin:-7px;
+width:18px;
+height:18px;
+margin:-9px;
 border-radius:50%;
-background:var(--clock-color);
+background:var(--clock);
 }
 
 .digital{
 position:absolute;
-top:57%;
+top:58%;
 left:50%;
 transform:translateX(-50%);
-font-size:24px;
+font-family:Georgia,serif;
+font-size:52px;
 font-weight:600;
-letter-spacing:2px;
-color:var(--clock-color);
+letter-spacing:1px;
+color:var(--clock);
 }
 </style>
 </head>
@@ -110,15 +111,7 @@ color:var(--clock-color);
 </div>
 
 <script>
-
-const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-document.documentElement.style.setProperty(
-'--clock-color',
-dark ? '#b4e5eb' : '#b89a62'
-);
-
-const clock = document.getElementById('clock');
+const clock=document.getElementById('clock');
 
 for(let i=0;i<12;i++){
 const tick=document.createElement('div');
@@ -128,24 +121,23 @@ clock.appendChild(tick);
 }
 
 function update(){
+const now=new Date();
 
-const now = new Date();
+const s=now.getSeconds();
+const m=now.getMinutes();
+const h=now.getHours()%12;
 
-const sec = now.getSeconds();
-const min = now.getMinutes();
-const hr = now.getHours()%12;
+hour.style.transform=
+`translate(-50%,-100%) rotate(${h*30+m/2}deg)`;
 
-document.getElementById('hour').style.transform =
-`translate(-50%, -100%) rotate(${hr*30 + min/2}deg)`;
+minute.style.transform=
+`translate(-50%,-100%) rotate(${m*6+s/10}deg)`;
 
-document.getElementById('minute').style.transform =
-`translate(-50%, -100%) rotate(${min*6}deg)`;
+second.style.transform=
+`translate(-50%,-100%) rotate(${s*6}deg)`;
 
-document.getElementById('second').style.transform =
-`translate(-50%, -100%) rotate(${sec*6}deg)`;
-
-document.getElementById('digital').textContent =
-now.toLocaleTimeString([], {
+digital.textContent=
+now.toLocaleTimeString([],{
 hour:'2-digit',
 minute:'2-digit'
 });
@@ -155,13 +147,12 @@ setInterval(update,1000);
 update();
 
 (function(){
-document.body.style.background =
-dark ? 'rgb(25,25,25)' : 'white';
+var dark=window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-document.documentElement.style.background =
-dark ? 'rgb(25,25,25)' : 'white';
+document.body.style.background=
+dark?'rgb(25,25,25)':'white';
+
 })();
-
 </script>
 
 </body>
