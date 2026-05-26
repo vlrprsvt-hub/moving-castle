@@ -31,25 +31,27 @@
     /* CANDLE GLOW */
 .candle-glow{
 position:absolute;
-bottom: -2%;
-left: 50%;
+
+left:50%;
+bottom:0;
+
 transform:translateX(-50%);
 
- width: 82%;
-height: auto;
-  
+width:82%;
+height:32%;
+
 background:
 radial-gradient(
-ellipse,
+ellipse at center bottom,
 rgba(255,190,90,0.18) 0%,
 rgba(255,170,70,0.08) 35%,
 transparent 88%
 );
 
-filter:blur(clamp(24px, 4vw, 42px));
+filter:blur(42px);
 
 pointer-events:none;
-z-index:0;
+z-index:1;
 }
     /* CANDLES */
     
