@@ -31,10 +31,8 @@
     /* CANDLE GLOW */
     .candle-glow{
 position:absolute;
-
 bottom:-8%;
 left:50%;
-
 transform:translateX(-50%);
 
 width:120%;
@@ -48,7 +46,7 @@ rgba(255,170,70,0.08) 35%,
 transparent 88%
 );
 
-filter:blur(6vh);
+filter:blur(calc(100% * 0.08));
 
 pointer-events:none;
 z-index:0;
