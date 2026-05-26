@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+html, body{
+margin:0;
+padding:0;
+width:100%;
+height:100%;
+overflow:hidden;
+}
+
+body{
+position:relative;
+width:100%;
+height:100%;
+overflow:hidden;
+background:transparent;
+font-family:'Cormorant Garamond', serif;
+}
+
+/* NOTION BACKGROUND FIX */
+
+.background-fix{
+position:absolute;
+inset:0;
+background:rgb(25,25,25);
+z-index:-20;
+}
+
+/* MAIN FRAME */
+
+.scene{
+position:relative;
+width:100%;
+height:100%;
+overflow:hidden;
+}
+
+/* TITLE */
+
+.title{
+position:absolute;
+top:8%;
+left:50%;
+transform:translateX(-50%);
+font-size:clamp(2rem, 8vw, 6rem);
+font-weight:700;
+color:#3e7682;
+letter-spacing:0.04em;
+z-index:10;
+white-space:nowrap;
+}
+
+/* SEA PLACEHOLDER */
+
+.sea-zone{
+position:absolute;
+left:0;
+bottom:18%;
+width:100%;
+height:42%;
+z-index:3;
+}
+
+/* SAND */
+
+.sand{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+height:18%;
+z-index:1;
+
+background:
+radial-gradient(circle at 20% 30%, rgba(210,180,120,0.35) 1%, transparent 2%),
+radial-gradient(circle at 60% 70%, rgba(235,205,145,0.28) 1%, transparent 2%),
+radial-gradient(circle at 80% 40%, rgba(190,160,105,0.22) 1%, transparent 2%),
+linear-gradient(
+to top,
+#b69464 0%,
+#c6a778 35%,
+#d8bb8d 65%,
+transparent 100%
+);
+
+background-size:
+2% 16%,
+2.5% 18%,
+1.8% 14%,
+100% 100%;
+}
+
+/* SOFT SHORE FADE */
+
+.shore-fade{
+position:absolute;
+bottom:16%;
+left:0;
+width:100%;
+height:10%;
+
+background:linear-gradient(
+to top,
+rgba(120,170,185,0.18),
+transparent
+);
+
+z-index:2;
+}
+
+/* THEME SWITCH */
+
+@media (prefers-color-scheme: light){
+
+.background-fix{
+background:#f5f3ef;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background-fix"></div>
+
+<div class="scene">
+
+<div class="title">Porthaven</div>
+
+<div class="sea-zone"></div>
+
+<div class="shore-fade"></div>
+
+<div class="sand"></div>
+
+</div>
+
+</body>
+</html>
