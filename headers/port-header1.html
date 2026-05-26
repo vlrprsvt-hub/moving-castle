@@ -157,4 +157,18 @@ opacity:0.18;
   <div class="wave wave-back"></div>
   <div class="wave wave-mid"></div>
   <div class="foam"></div>
-</div></body></html>
+</div>
+<script>
+(function() {
+
+var mql = window.matchMedia('(prefers-color-scheme: dark)');
+var isDark = typeof mql.matches === 'boolean' && mql.matches;
+
+document.body.style.background =
+isDark
+? 'rgb(25,25,25)'
+: 'white';
+
+})();
+</script>
+</body></html>
